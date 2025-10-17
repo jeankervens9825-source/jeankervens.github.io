@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jean Kervens - E-Portafolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        nav {
+            margin-top: 20px;
+        }
+
+        nav a {
+            color: #667eea;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #764ba2;
+        }
+
+        section {
+            background: white;
+            padding: 40px;
+            margin-bottom: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #667eea;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+            font-size: 2em;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .about-item h3 {
+            color: #764ba2;
+            margin-bottom: 15px;
+        }
+
+        .about-item ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .about-item li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .about-item li:before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .project-card {
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 25px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            background: #f9f9f9;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+            border-color: #667eea;
+        }
+
+        .project-card h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        .project-screenshot {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 2px solid #e0e0e0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            margin: 10px 10px 10px 0;
+            transition: transform 0.3s, box-shadow 0.3s;
+            font-weight: 600;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            background: #f9f9f9;
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .contact-item h3 {
+            color: #764ba2;
+            margin-bottom: 15px;
+        }
+
+        .email-image {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid #e0e0e0;
+            display: inline-block;
+            font-family: 'Courier New', monospace;
+            color: #333;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            padding: 30px 20px;
+            margin-top: 50px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .skill-category {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            border-top: 4px solid #667eea;
+        }
+
+        .skill-category h3 {
+            color: #764ba2;
+            margin-bottom: 15px;
+        }
+
+        .instructions-box {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f0f7ff;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .instructions-box h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        .instructions-box code {
+            background: #e8f0ff;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            color: #667eea;
+        }
+
+        @media (max-width: 768px) {
+            .about-content,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            nav a {
+                display: block;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Jean Kervens</h1>
+            <p class="subtitle">Estudiante de Ciberseguridad | DJ Profesional | Desarrollador de Proyectos</p>
+            <p>📍 Santiago de los Caballeros, República Dominicana</p>
+            <nav>
+                <a href="#sobre-mi">Sobre Mí</a>
+                <a href="#portafolio">Portafolio</a>
+                <a href="#habilidades">Habilidades</a>
+                <a href="#contacto">Contacto</a>
+            </nav>
+        </header>
+
+        <section id="sobre-mi">
+            <h2>Sobre Mí</h2>
+            <p style="font-size: 1.1em; margin-bottom: 30px;">
+                Soy un profesional multilingüe apasionado por la tecnología y la cultura. Actualmente estudio 
+                Ciberseguridad en la PUCMM y combino mis habilidades técnicas con mi pasión por la música 
+                como DJ profesional. Con experiencia en servicio al cliente, gestión de proyectos y organización 
+                de eventos culturales.
+            </p>
+
+            <div class="about-content">
+                <div class="about-item">
+                    <h3>📚 Educación</h3>
+                    <ul>
+                        <li>Estudiante de Ciberseguridad - PUCMM</li>
+                        <li>Bachillerato (2018/2019)</li>
+                        <li>Diploma en Estudios de Inglés (2016)</li>
+                        <li>Tres niveles de Español para Extranjeros - PUCMM</li>
+                    </ul>
+                </div>
+
+                <div class="about-item">
+                    <h3>💼 Experiencia Profesional</h3>
+                    <ul>
+                        <li>2 años en Servicio al Cliente</li>
+                        <li>Gestión de grupos juveniles</li>
+                        <li>Desarrollo de múltiples proyectos</li>
+                        <li>Organización de actividades culturales</li>
+                        <li>DJ Profesional</li>
+                    </ul>
+                </div>
+
+                <div class="about-item">
+                    <h3>🌍 Idiomas</h3>
+                    <ul>
+                        <li>Francés: Avanzado (DELF B2)</li>
+                        <li>Inglés: Avanzado (B2)</li>
+                        <li>Español: Competente</li>
+                        <li>Kreyòl: Nativo</li>
+                    </ul>
+                </div>
+
+                <div class="about-item">
+                    <h3>🎯 Intereses</h3>
+                    <ul>
+                        <li>Fútbol</li>
+                        <li>Música</li>
+                        <li>DJing</li>
+                        <li>Tecnología y Ciberseguridad</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="portafolio">
+            <h2>Portafolio / Proyectos</h2>
+            <p style="margin-bottom: 20px;">A continuación se muestran algunos de los proyectos y asignaciones realizadas:</p>
+            
+            <div class="project-grid">
+                <div class="project-card">
+                    <img src="proyecto1-linux.jpg" alt="Terminal Linux Kali" class="project-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                    <div class="project-screenshot" style="display: none;">🐧 Linux</div>
+                    <h3>Administración de Sistemas Linux</h3>
+                    <p>Trabajo con terminal de Kali Linux, gestión de directorios y archivos del sistema. Configuración de entornos virtuales y administración de servicios.</p>
+                    <p><strong>Herramientas:</strong> Kali Linux, VMware, Terminal Bash</p>
+                    <p><strong>Fecha:</strong> 2025</p>
+                </div>
+
+                <div class="project-card">
+                    <img src="proyecto2-windowsserver.jpg" alt="Windows Server 2022" class="project-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                    <div class="project-screenshot" style="display: none;">🖥️ Server</div>
+                    <h3>Windows Server 2022 - Administración</h3>
+                    <p>Configuración y administración de Windows Server 2022. Gestión de servicios, firewall, configuración de red y seguridad del servidor. Dominio: jean.local</p>
+                    <p><strong>Herramientas:</strong> Windows Server 2022, VMware, DNS, DHCP</p>
+                    <p><strong>Fecha:</strong> 16/09/2025</p>
+                </div>
+
+                <div class="project-card">
+                    <img src="proyecto3-windows10.jpg" alt="Configuración Windows 10" class="project-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                    <div class="project-screenshot" style="display: none;">💻 Windows</div>
+                    <h3>Configuración de Sistema Windows 10</h3>
+                    <p>Configuración avanzada de sistema operativo Windows 10 Pro. Gestión de especificaciones del dispositivo, seguridad y optimización del sistema.</p>
+                    <p><strong>Herramientas:</strong> Windows 10 Pro, Panel de Control</p>
+                    <p><strong>Especificaciones:</strong> Intel Core i7-6500U, 2GB RAM</p>
+                </div>
+
+                <div class="project-card">
+                    <img src="proyecto4-activedirectory.jpg" alt="Active Directory" class="project-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                    <div class="project-screenshot" style="display: none;">📁 AD</div>
+                    <h3>Active Directory - Estructura Organizacional</h3>
+                    <p>Diseño e implementación de estructura de Active Directory para la empresa "EMPREZA KERVENS Jean". Creación de OUs (Ventas, Recursos Humanos, Contabilidad), gestión de usuarios y equipos.</p>
+                    <p><strong>Herramientas:</strong> Active Directory, Windows Server, AD Users and Computers</p>
+                    <p><strong>Usuarios configurados:</strong> Juan Perez, Maria Gonzalez</p>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-screenshot">🔐 Ciberseguridad</div>
+                    <h3>Proyectos de Ciberseguridad</h3>
+                    <p>Implementación de protocolos de seguridad, análisis de vulnerabilidades y configuración de redes seguras utilizando herramientas especializadas.</p>
+                    <p><strong>Herramientas:</strong> Cisco Packet Tracer, Kali Linux, Wireshark</p>
+                    <p><strong>Institución:</strong> PUCMM (TEP)</p>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-screenshot">🌐 E-Portafolio</div>
+                    <h3>Portafolio Digital Profesional</h3>
+                    <p>Diseño y desarrollo de este portafolio digital profesional con todas las secciones requeridas: proyectos, CV, LinkedIn y contacto.</p>
+                    <p><strong>Herramientas:</strong> HTML5, CSS3, Diseño Responsive</p>
+                    <p><strong>Fecha:</strong> Octubre 2025</p>
+                </div>
+            </div>
+
+
+        </section>
+
+        <section id="habilidades">
+            <h2>Habilidades</h2>
+            
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>💻 Tecnología</h3>
+                    <ul>
+                        <li>Cisco Packet Tracer</li>
+                        <li>Microsoft Office Suite</li>
+                        <li>Notepad++</li>
+                        <li>Ciberseguridad</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>🎵 Producción Musical</h3>
+                    <ul>
+                        <li>Virtual DJ</li>
+                        <li>Serato DJ</li>
+                        <li>Mezcla en vivo</li>
+                        <li>Producción de eventos</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>🤝 Habilidades Blandas</h3>
+                    <ul>
+                        <li>Comunicación efectiva</li>
+                        <li>Fortaleza mental</li>
+                        <li>Trabajo en equipo</li>
+                        <li>Liderazgo</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>📋 Gestión</h3>
+                    <ul>
+                        <li>Desarrollo de proyectos</li>
+                        <li>Organización de eventos</li>
+                        <li>Redacción de documentos</li>
+                        <li>Servicio al cliente</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto">
+            <h2>Contacto</h2>
+            <p style="margin-bottom: 30px;">¿Interesado en colaborar? No dudes en contactarme a través de los siguientes medios:</p>
+            
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <h3>📧 Correo Electrónico</h3>
+                    <p>Para evitar spam, mi correo se muestra como imagen:</p>
+                    <div class="email-image">
+                        jeankervens9825@gmail.com
+                    </div>
+                    <p style="margin-top: 10px; font-size: 0.9em; color: #666;">
+                        <em>Nota: Por favor, escribe este correo manualmente para contactarme.</em>
+                    </p>
+                </div>
+
+                <div class="contact-item">
+                    <h3>📱 Teléfono</h3>
+                    <p style="font-size: 1.2em; font-weight: bold; color: #667eea;">
+                        +1 (829) 478-2150
+                    </p>
+                </div>
+
+                <div class="contact-item">
+                    <h3>📍 Ubicación</h3>
+                    <p style="font-size: 1.1em;">
+                        Santiago de los Caballeros<br>
+                        República Dominicana
+                    </p>
+                </div>
+
+                <div class="contact-item">
+                    <h3>🔗 Enlaces Profesionales</h3>
+                    <a href="https://linkedin.com/in/kervens-jean-932592307" target="_blank" class="btn">
+                        Ver Perfil de LinkedIn
+                    </a>
+                    <a href="#" onclick="alert('Sube tu CV en PDF y actualiza este enlace')" class="btn btn-secondary">
+                        Descargar CV
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2025 Jean Kervens. Todos los derechos reservados.</p>
+            <p style="margin-top: 10px;">Hecho con ❤️ para mostrar mi trabajo profesional</p>
+        </footer>
+    </div>
+</body>
+</html>
